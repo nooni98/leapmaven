@@ -41,4 +41,5 @@ jobs:
       run: |
            mvn package
            ls -lrth
-      
+    - name: Run Jar File
+      run: java -cp target/leapmaven-1.0-SNAPSHOT.jar com.nooni19.leap
