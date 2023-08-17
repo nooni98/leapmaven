@@ -1,0 +1,44 @@
+
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Version Check
+      run: |
+           mvn -version
+           java -version
+           pwd
+           ls -lrth
+    - name: Validate POM file
+      run: | 
+            mvn validate
+            ls -lrth
+    - name: Complie the Java File
+      run: |
+            mvn compile
+            ls -lrth
+    - name: Test Execution
+      run: | 
+            mvn test
+            ls -lrth
+    - name: Clean the Code
+      run:  | 
+            mvn clean
+            ls -lrth
+    - name: Package the Code
+      run: |
+           mvn package
+           ls -lrth
+      
